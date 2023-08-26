@@ -1,0 +1,10 @@
+post http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndpbnRlciIsImlkIjoiNjQzYzM4NzY4MTZhM2I5N2VlN2M3OGNlIiwiaWF0IjoxNjgxNjcwMDcwfQ.RIPjLG0zBu00ost062opnFgKuqjCSBVulN4k0uQKUE8
+
+{
+    "title": "add blog with token 3",
+    "author": "vinayak",
+    "text": "fso.com",
+    "likes": 47
+}

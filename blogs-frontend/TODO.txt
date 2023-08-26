@@ -1,0 +1,14 @@
+can't access /blogs/:id directly; have to access via users page
+
+Dynamic realtime likes:
+https://pusher.com/tutorials/realtime-likes-nodejs
+
+A user should like a post only one time
+
+UNLIKE
+
+Error in backedn after deleting blog
+
+Blogs not showing when no user logged in
+
+Check if username already exists while signing up

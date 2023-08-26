@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .nav-bar {
+    @apply bg-black text-white flex flex-row justify-stretch items-center;
+  }
+  .button-nav-bar {
+    @apply justify-evenly text-center items-center hover:bg-white hover:border-b hover:text-black cursor-pointer px-2;
+  }
+  .blog-list {
+    @apply flex-col
+  }
+  .blog-list-item {
+    @apply shadow hover:shadow-lg mx-2 my-4 items-center
+  }
+  .comment {
+    @apply flex flex-col border-b-2 border-black mx-2 text-sm
+  }
+  .button-generic {
+    @apply mx-2 bg-black text-white rounded-xl px-2 hover:font-bold
+  }
+  .blog-form {
+    @apply flex flex-col mx-2 my-2 px-2 border-2 border-black
+  }
+  .users-table {
+    @apply m-2 p-2 border-2 border-black text-center
+  }
+  .signup {
+    @apply flex flex-col mx-2 my-2
+  }
+}
+
+.update {
+  color: green;
+  background: lightgrey;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+  background: lightgrey;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
