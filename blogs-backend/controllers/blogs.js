@@ -2,6 +2,8 @@ const blogsRouter = require('express').Router()
 const Blog = require('../models/blog')
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
+const redisClient = require('../redisClient')
+const { myQueue } = require('../bullmq')
 
 blogsRouter.get('/', async (request, response) => {
   const blogs = await Blog.find({}).populate('user', { username: 1, name: 1 })
@@ -9,8 +11,15 @@ blogsRouter.get('/', async (request, response) => {
 })
 
 blogsRouter.get('/:id', async (request, response) => {
+  const id = request.params.id
+  const cachedBlog = await redisClient.get(`blog:${id}`)
+  if(cachedBlog) {
+    return response.json(JSON.parse(cachedBlog))
+  }
+
   const blog = await Blog.findById(request.params.id)
   if (blog) {
+    await redisClient.set(`blog:${id}`, JSON.stringify(blog))
     response.json(blog)
   } else {
     response.status(404).end()
@@ -42,7 +51,9 @@ blogsRouter.post('/', async (request, response) => {
       user: {
       "id": user.id, "name": user.name, "username": user.username 
     } }
-  
+    
+    await myQueue.add('blogQueue', { blog: returnedBlog })
+
     response.status(201).json(returnedBlog)
 })
 
